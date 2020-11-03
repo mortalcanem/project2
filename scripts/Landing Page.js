@@ -4,6 +4,13 @@ sendButton.addEventListener("click", scheduleAppt);
   
 function scheduleAppt() {
     let userName = document.querySelector("#username").value;
+    let nameEx = /^\w{3,25}$/g;
+    let dateEx = /^\d{4}\/\d{2}\/\d{2} \d{2}\:\d{2}$/g;
+    console.log(userName.match(nameEx));
+    if (!userName.match(nameEx)){
+        $.notify("Invalid Input!", "error");
+        return;
+    }else{
     let instructorList = document.querySelector("#lecturer");
     let instructor = instructorList.options[instructorList.selectedIndex].text;
     let [instructorFirstName, instructorLastName] = instructor.split(' ');
@@ -12,6 +19,7 @@ function scheduleAppt() {
     let [year, month, date] = fullDate.split("/");
     let newAppt = (`${instructorFirstName} - ${month}/${date} - ${time}`);
     //console.log(newAppt);
+    if (dateTime.match(dateEx)){
     let newLi = document.createElement("li");
     let newSpan = document.createElement("span");
     let newI = document.createElement('i');
@@ -37,8 +45,8 @@ function scheduleAppt() {
     consultNum2.innerText = updatedConsultNum;
     //console.log(updatedConsultNum);
     $.notify("Access granted", "success");
-
-
-
+        }else
+        $.notify("Invalid Input!", "error");
+    }
 
 }
