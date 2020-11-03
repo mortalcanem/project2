@@ -1,7 +1,7 @@
 
 let sendButton = document.querySelector("#bookHourBtn");
 sendButton.addEventListener("click", scheduleAppt);
- 
+  
 function scheduleAppt() {
     let userName = document.querySelector("#username").value;
     let instructorList = document.querySelector("#lecturer");
@@ -15,9 +15,8 @@ function scheduleAppt() {
     let newLi = document.createElement("li");
     let newSpan = document.createElement("span");
     let newI = document.createElement('i');
-    //let chev = '\u03A9';
-    //let tempClass = `fas fa-chevron-circle-right`;
-    //newI.classList.add(tempClass);
+    newI.className = "fas fa-chevron-circle-right";
+    
     let apptList = document.querySelector("#appt-list");
 
     newSpan.textContent = newAppt;
@@ -37,6 +36,7 @@ function scheduleAppt() {
     //console.log(updatedConsultNum);
     consultNum2.innerText = updatedConsultNum;
     //console.log(updatedConsultNum);
+    $.notify("Access granted", "success");
 
 
 
